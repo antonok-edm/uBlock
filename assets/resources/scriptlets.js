@@ -23,7 +23,7 @@
 */
 
 // Externally added to the private namespace in which scriptlets execute.
-/* global sriptletGlobals */
+/* global scriptletGlobals */
 
 'use strict';
 
@@ -42,15 +42,15 @@ builtinScriptlets.push({
     fn: safeSelf,
 });
 function safeSelf() {
-    if ( sriptletGlobals.has('safeSelf') ) {
-        return sriptletGlobals.get('safeSelf');
+    if ( scriptletGlobals.has('safeSelf') ) {
+        return scriptletGlobals.get('safeSelf');
     }
     const safe = {
         'RegExp': self.RegExp,
         'RegExp_test': self.RegExp.prototype.test,
         'RegExp_exec': self.RegExp.prototype.exec,
     };
-    sriptletGlobals.set('safeSelf', safe);
+    scriptletGlobals.set('safeSelf', safe);
     return safe;
 }
 
