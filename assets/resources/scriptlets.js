@@ -726,6 +726,7 @@ function replaceNodeTextFn(
     };
     let sedCount = extraArgs.sedCount || 0;
     const handleNode = node => {
+        if (node === document.currentScript) { return true; }
         const before = node.textContent;
         reCondition.lastIndex = 0;
         if ( safe.RegExp_test.call(reCondition, before) === false ) { return true; }
